@@ -1,0 +1,17 @@
+{
+   "name": "backend",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+    "scripts": {
+    "backend": "nodemon backend/src/index.js",
+    "frontend": "cd frontend/meetingTime && npm run dev",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "build": "npm install --prefix frontend/meetingTime && npm run build --prefix frontend/meetingTime",
+     "start": "node backend/src/index.js"
+   
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
