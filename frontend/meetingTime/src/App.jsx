@@ -3,8 +3,10 @@ import "./App.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import useAuthUser from "./hooks/useAuthUserHook";
-import PageLoader from "./components/pageLoader";
-import SignupPage from "./pages/SignUppage";
+import PageLoader from "./components/PageLoader";
+
+import SignupPage from "./pages/SignupPage"
+
 import LoginPage from "./pages/LoginPage";
 import OnboardPage from "./pages/OnboardPage";
 import Layout from "./components/Layout";
