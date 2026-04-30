@@ -10,7 +10,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 let app = express();
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: "../.env" });
 app.use(express.json())
 app.use(
   cors({
