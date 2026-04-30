@@ -14,7 +14,7 @@ dotenv.config({ path: "../.env" });
 app.use(express.json())
 app.use(
   cors({
-    origin: "https://meetingtime-1.onrender.com",
+    origin:  "https://meeting-time-uaxw.vercel.app",
     methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
   })
