@@ -14,7 +14,7 @@ dotenv.config({ path: "../.env" });
 app.use(express.json())
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://meetingtime-1.onrender.com",
     methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
   })
