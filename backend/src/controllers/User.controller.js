@@ -42,8 +42,8 @@ export const resgisterUser = async (req, res) => {
     );
     let options = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: true,
+      sameSite: "None",
     };
     res.cookie("refreshToken", refreshToken, options);
     res.cookie("accessToken", accessToken, options);
@@ -67,7 +67,7 @@ export const resgisterUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   let { email, password } = req.body;
 
-  if (!(email || password)) {
+  if (!(email && password)) {
     return res.status(400).json({ message: "all field must be filled" });
   }
 
@@ -75,7 +75,6 @@ export const loginUser = async (req, res) => {
     $or: [{ email }],
   });
 
-   
   let userPassword = await user.isPassword(password);
 
   if (!userPassword) {
@@ -90,8 +89,8 @@ export const loginUser = async (req, res) => {
 
   let options = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    secure: true,
+    sameSite: "None",
   };
 
   res.cookie("refreshToken", refreshToken, options);
@@ -110,12 +109,11 @@ export const logoutUser = async (req, res) => {
     await User.findByIdAndUpdate(req.user?._id, {
       REFRESH_TOKEN: "",
     });
-    const options = {
+    let options = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: true,
+      sameSite: "None",
     };
-
     return res
       .status(201)
 
@@ -170,7 +168,7 @@ export const onBoard = async (req, res) => {
     if (!updatedUser)
       return res.status(404).json({ message: "User not found" });
 
-   return res.status(200).json({ success: true, user: updatedUser });
+    return res.status(200).json({ success: true, user: updatedUser });
   } catch (error) {
     return res.status(500).json({
       status: false,
